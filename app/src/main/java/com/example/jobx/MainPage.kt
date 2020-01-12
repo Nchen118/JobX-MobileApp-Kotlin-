@@ -59,6 +59,7 @@ class MainPage : AppCompatActivity() {
                     R.anim.slide_out_left
                 ).toBundle()
             )
+
             finish()
         } else {
             supportActionBar?.title = "JobX"

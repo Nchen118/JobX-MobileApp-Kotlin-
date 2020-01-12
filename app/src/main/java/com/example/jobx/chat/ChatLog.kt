@@ -1,5 +1,7 @@
 package com.example.jobx.chat
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -94,11 +96,10 @@ class ChatLog : AppCompatActivity() {
 
                 if (chatMessage != null) {
                     Log.d(TAG, chatMessage.text)
-
                     if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
-                        adapter.add(ChatFromItem(chatMessage.text, currentUser))
+                        adapter.add(ChatFromItem(baseContext,chatMessage.text, currentUser))
                     } else {
-                        adapter.add(ChatToItem(chatMessage.text, toUser))
+                        adapter.add(ChatToItem(baseContext,chatMessage.text, toUser))
                     }
                 }
 

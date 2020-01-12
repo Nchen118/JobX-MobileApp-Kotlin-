@@ -44,7 +44,7 @@ class ChatList : AppCompatActivity() {
     private fun refreshRecyclerViewMessages() {
         adapter.clear()
         latestMessagesMap.values.forEach {
-            adapter.add(ChatListRow(it))
+            adapter.add(ChatListRow(this,it))
         }
     }
 
