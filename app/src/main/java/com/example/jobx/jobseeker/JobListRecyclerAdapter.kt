@@ -13,6 +13,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jobx.MainPage
 import com.example.jobx.R
+import com.example.jobx.chat.ChatLog
+import com.example.jobx.chat.UserList
 import com.example.jobx.database.Job
 import com.example.jobx.database.Subscriber
 import com.google.firebase.auth.FirebaseAuth
@@ -40,8 +42,9 @@ class JobListRecyclerAdapter(private val mContext: Context, private val mData: L
             mContext.startActivity(intent)
         }
         holder.msg.setOnClickListener {
-            Toast.makeText(mContext, "Message button press", Toast.LENGTH_SHORT)
-                .show()
+            val i = Intent(mContext, ChatLog::class.java)
+            i.putExtra(UserList.USER_KEY,mData.elementAt(position).company_id)
+            mContext.startActivity(i)
         }
     }
 

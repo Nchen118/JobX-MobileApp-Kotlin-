@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.jobx.admin.AdminActivity
+import com.example.jobx.chat.ChatList
 import com.example.jobx.company.ApproveJobRequest
 import com.example.jobx.company.CompanyJobList
 import com.example.jobx.company.InsertJob
@@ -32,6 +33,10 @@ class MainPage : AppCompatActivity() {
         val viewPage = findViewById<ViewPager>(R.id.pager)
         val fragmentAdapter = Adapter(supportFragmentManager)
 
+        fabChat.setOnClickListener {
+            val intent = Intent(this,ChatList::class.java)
+            startActivity(intent)
+        }
         if (Common.user?.position == "jobseeker") {
             fragmentAdapter.addFragment(InfoWall(), "Page 1")
             fragmentAdapter.addFragment(JobList(), "Job")
