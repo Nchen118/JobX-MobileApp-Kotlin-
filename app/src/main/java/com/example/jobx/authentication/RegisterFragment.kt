@@ -221,8 +221,7 @@ class RegisterFragment : Fragment() {
                         txtAddress.text.toString(),
                         txtCity.text.toString(),
                         txtPosCode.text.toString(),
-//                        if (selectSwitch.isChecked) "company" else "jobseeker",
-                        "admin",
+                        if (selectSwitch.isChecked) "company" else "jobseeker",
                         "true"
                     )
                     fStore.collection("users").document(mAuth.currentUser!!.uid).set(
