@@ -236,6 +236,7 @@ class RegisterFragment : Fragment() {
                             "Account success register",
                             Toast.LENGTH_SHORT
                         ).show()
+                        mAuth.currentUser!!.sendEmailVerification()
                         FirebaseAuth.getInstance().signOut()
                         startActivity(
                             Intent(this.context, RegisterSuccessful::class.java),
