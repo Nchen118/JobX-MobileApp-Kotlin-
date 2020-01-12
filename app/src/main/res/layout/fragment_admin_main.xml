@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".admin.AdminMainFragment">
 
-    <ImageButton
+    <Button
         android:id="@+id/job_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toEndOf="@+id/user_btn"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <Button
         android:id="@+id/company_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toEndOf="@+id/job_btn"
         app:layout_constraintTop_toBottomOf="@+id/job_btn" />
 
-    <ImageButton
+    <Button
         android:id="@+id/user_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

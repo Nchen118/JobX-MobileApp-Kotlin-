@@ -6,7 +6,7 @@
     app:startDestination="@+id/adminMainFragment">
     <fragment
         android:id="@+id/adminMainFragment"
-        android:name="com.example.jobx.admin.ManageJobFragment"
+        android:name="com.example.jobx.admin.ManageJobList"
         android:label="fragment_admin_main"
         tools:layout="@layout/fragment_admin_main">
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/manageJobFragment"
-        android:name="com.example.jobx.admin.ManageJobFragment"
+        android:name="com.example.jobx.admin.ManageJobList"
         android:label="fragment_manage_job"
         tools:layout="@layout/fragment_manage_job" />
     <activity
@@ -28,7 +28,7 @@
         tools:layout="@layout/activity_admin" />
     <fragment
         android:id="@+id/manageUserFragment"
-        android:name="com.example.jobx.admin.ManageUserFragment"
+        android:name="com.example.jobx.admin.ManageUserList"
         android:label="fragment_manage_user"
         tools:layout="@layout/fragment_manage_user" />
 </navigation>

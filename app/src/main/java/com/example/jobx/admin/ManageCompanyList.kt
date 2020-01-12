@@ -1,28 +1,21 @@
-package com.example.jobx.jobseeker
+package com.example.jobx.admin
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jobx.R
 import com.example.jobx.database.User
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.recycle_info_list.*
 
-class CompanyList : Fragment() {
-    private var listCompany: List<User>? = null
+class ManageCompanyList : AppCompatActivity() {
+    private var listUser: List<User>? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.recycle_info_list, container, false)
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.recycle_info_list)
 
         setData()
 
@@ -37,12 +30,12 @@ class CompanyList : Fragment() {
         shimmer.startShimmer()
 
         FirebaseFirestore.getInstance().collection("users")
-            .whereEqualTo("position", "company").get().addOnSuccessListener { documentSnapshot ->
-                listCompany = documentSnapshot.toObjects(User::class.java)
-
+            .whereEqualTo("position", "company").get()
+            .addOnSuccessListener { documentSnapshot ->
+                listUser = documentSnapshot.toObjects(User::class.java)
                 recycleView.apply {
                     layoutManager = LinearLayoutManager(this.context)
-                    adapter = CompanyListRecyclerAdapter(this.context, listCompany.orEmpty())
+                    adapter = AdminCompanyRecyclerAdapter(this.context, listUser.orEmpty())
                 }
 
                 shimmer.stopShimmer()
@@ -51,4 +44,5 @@ class CompanyList : Fragment() {
                 swipe_refresher.isRefreshing = false
             }
     }
+
 }

@@ -15,59 +15,59 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/JobID"
+            android:id="@+id/Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="JobID"
+            android:text="Name"
             android:textStyle="bold"
             android:visibility="visible"
-            tools:text="JobID" />
+            tools:text="Name" />
 
         <TextView
-            android:id="@+id/JobID_text"
+            android:id="@+id/Name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="120dp"
             android:layout_marginTop="20dp"
-            android:text="JobID" />
+            android:text="Name" />
 
         <TextView
-            android:id="@+id/JobName"
+            android:id="@+id/Phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="45dp"
-            android:text="JobName"
+            android:text="Phone"
             android:textStyle="bold"
-            tools:text="JobName" />
+            tools:text="Phone" />
 
         <TextView
-            android:id="@+id/JobName_text"
+            android:id="@+id/Phone_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:layout_marginTop="45dp"
-            android:text="JobName" />
+            android:text="Phone" />
 
         <TextView
-            android:id="@+id/CompanyID"
+            android:id="@+id/Address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="70dp"
-            android:text="CompanyID"
+            android:text="Address"
             android:textStyle="bold"
-            tools:text="CompanyID" />
+            tools:text="Address" />
 
         <TextView
-            android:id="@+id/CompanyID_text"
+            android:id="@+id/Address_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:layout_marginTop="70dp"
-            android:text="CompanyID" />
+            android:text="Address" />
 
         <Switch
             android:id="@+id/switch1"

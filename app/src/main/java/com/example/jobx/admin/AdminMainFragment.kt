@@ -19,7 +19,6 @@ class AdminMainFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_admin_main, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,7 +26,7 @@ class AdminMainFragment : Fragment() {
 
         job_btn.setOnClickListener{view : View ->
             startActivity(
-                Intent(this.context, ManageJobFragment::class.java),
+                Intent(this.context, ManageJobList::class.java),
                 ActivityOptions.makeCustomAnimation(
                     this.context,
                     R.anim.slide_in_right,
@@ -36,7 +35,24 @@ class AdminMainFragment : Fragment() {
             )
         }
         user_btn.setOnClickListener{view : View ->
-            view.findNavController().navigate(R.id.action_adminMainFragment_to_manageUserFragment)
+            startActivity(
+                Intent(this.context, ManageUserList::class.java),
+                ActivityOptions.makeCustomAnimation(
+                    this.context,
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                ).toBundle()
+            )
+        }
+        company_btn.setOnClickListener{view : View ->
+            startActivity(
+                Intent(this.context, ManageCompanyList::class.java),
+                ActivityOptions.makeCustomAnimation(
+                    this.context,
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                ).toBundle()
+            )
         }
     }
 

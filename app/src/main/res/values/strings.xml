@@ -117,4 +117,5 @@
     <string name="todo">TODO</string>
     <string name="facebook_app_id">1205518309642074</string>
     <string name="fb_login_protocol_scheme">fb1205518309642074</string>
+    <string name="default_web_client_id">515790651987-b3olvl6e4id3dcqbfqtum7qvoevh0fes.apps.googleusercontent.com</string>
 </resources>
