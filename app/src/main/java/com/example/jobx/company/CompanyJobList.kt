@@ -52,7 +52,7 @@ class CompanyJobList : Fragment() {
                     layoutManager = LinearLayoutManager(this.context)
                     adapter = CompanyJobRecycleViewAdapter(
                         this.context,
-                        listCompany.orEmpty()
+                        listCompany.orEmpty() as MutableList<Job>
                     )
                 }
 

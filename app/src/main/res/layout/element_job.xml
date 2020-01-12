@@ -58,12 +58,11 @@
             android:id="@+id/msgButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/desc"
             android:layout_alignEnd="@+id/desc"
-            android:layout_alignBottom="@+id/desc"
-            android:layout_marginEnd="-1dp"
-            android:layout_marginBottom="-20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="14dp"
             app:srcCompat="@drawable/ic_message_black_24dp" />
-
 
     </RelativeLayout>
 

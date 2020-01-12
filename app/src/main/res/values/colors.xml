@@ -9,5 +9,6 @@
     <color name="blue">#2ddfff</color>
     <color name="white_greyish">#EEEEEE</color>
     <color name="placeholder_color">#dddddd</color>
+    <color name="c2">#666f78</color>
     <color name="red">#FF0000</color>
 </resources>

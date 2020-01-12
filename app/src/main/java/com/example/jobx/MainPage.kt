@@ -6,6 +6,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.jobx.admin.AdminActivity
+import com.example.jobx.chat.ChatList
+import com.example.jobx.company.ApproveJobRequest
+import com.example.jobx.company.CompanyJobList
+import com.example.jobx.company.InsertJob
 import com.example.jobx.jobseeker.CompanyList
 import com.example.jobx.jobseeker.JobList
 import com.example.jobx.library.Adapter
@@ -29,6 +33,10 @@ class MainPage : AppCompatActivity() {
         val viewPage = findViewById<ViewPager>(R.id.pager)
         val fragmentAdapter = Adapter(supportFragmentManager)
 
+        fabChat.setOnClickListener {
+            val intent = Intent(this,ChatList::class.java)
+            startActivity(intent)
+        }
         if (Common.user?.position == "jobseeker") {
             fragmentAdapter.addFragment(InfoWall(), "Page 1")
             fragmentAdapter.addFragment(JobList(), "Job")
@@ -37,6 +45,9 @@ class MainPage : AppCompatActivity() {
             supportActionBar?.title = "Job Seeker"
         } else if (Common.user?.position == "company") {
             fragmentAdapter.addFragment(InfoWall(), "Page 1")
+            fragmentAdapter.addFragment(InsertJob(), "Insert")
+            fragmentAdapter.addFragment(CompanyJobList(), "Job")
+            fragmentAdapter.addFragment(ApproveJobRequest(), "Request List")
             fragmentAdapter.addFragment(LogoutPage(), "Logout")
             supportActionBar?.title = "Company"
         } else if (Common.user?.position == "admin") {
@@ -48,6 +59,7 @@ class MainPage : AppCompatActivity() {
                     R.anim.slide_out_left
                 ).toBundle()
             )
+
             finish()
         } else {
             supportActionBar?.title = "JobX"

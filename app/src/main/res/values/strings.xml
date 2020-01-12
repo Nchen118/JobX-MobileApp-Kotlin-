@@ -115,7 +115,19 @@
         "Email verification has sent"
     </string>
     <string name="todo">TODO</string>
+    <string name="date">Date</string>
+    <string name="workHour">Work Hour</string>
+    <string name="insertRecord">Insert</string>
+    <string name="location">Location</string>
+    <string name="job_position">Job Position</string>
+    <string name="job_salary">Job Salary</string>
+    <string name="job_desc">Job Description</string>
+    <string name="job_name">Job Name</string>
+    <string name="insert">Insert</string>
+    <string name="number_available">Number Available</string>
+    <string name="update">Update</string>
+    <string name="updateRecord">Update</string>
     <string name="facebook_app_id">1205518309642074</string>
     <string name="fb_login_protocol_scheme">fb1205518309642074</string>
-    <string name="default_web_client_id">515790651987-b3olvl6e4id3dcqbfqtum7qvoevh0fes.apps.googleusercontent.com</string>
+    <string name="iidd">"1021554430963-od0f1ubpf3fc5fl0u9dr9dve5j5p480n.apps.googleusercontent.com"</string>
 </resources>
