@@ -69,6 +69,7 @@ class MainPage : AppCompatActivity() {
         tabs.setupWithViewPager(viewPage)
 
         name.text = Common.user.name
+
     }
 
 
