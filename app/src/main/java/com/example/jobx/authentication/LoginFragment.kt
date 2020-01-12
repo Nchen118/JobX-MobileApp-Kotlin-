@@ -17,7 +17,7 @@ import com.example.jobx.library.Common
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.loading_icon.*
+import kotlinx.android.synthetic.main.auth_activity.*
 import kotlinx.android.synthetic.main.login_fragment.*
 
 class LoginFragment : Fragment() {
@@ -61,7 +61,7 @@ class LoginFragment : Fragment() {
 
             if (!err) {
                 Common.buttonDisable(signButton, this.context!!)
-                loading_wrap.visibility = View.VISIBLE
+                this.activity!!.loading_wrap.visibility = View.VISIBLE
                 mAuth.signInWithEmailAndPassword(
                     txtEmail.text.toString(),
                     txtPassword.text.toString()
@@ -70,7 +70,7 @@ class LoginFragment : Fragment() {
                         if (task.isSuccessful) signIn()
                         else {
                             Common.buttonEnable(signButton, this.context!!)
-                            loading_wrap.visibility = View.GONE
+                            this.activity!!.loading_wrap.visibility = View.GONE
                             Toast.makeText(this.context, "Unable to login", Toast.LENGTH_SHORT)
                                 .show()
                         }
@@ -80,11 +80,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun signIn() {
+        fUser = mAuth.currentUser!!
+
         if (mAuth.currentUser!!.isEmailVerified) {
             fStore.collection("users").document(mAuth.currentUser!!.uid).get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Common.user.id = mAuth.currentUser!!.uid
+                        Common.user.id = fUser.uid
                         Common.user = task.result?.toObject(User::class.java)!!
                         Toast.makeText(this.context, "Login Successful", Toast.LENGTH_SHORT).show()
                         startActivity(
@@ -99,7 +101,6 @@ class LoginFragment : Fragment() {
                     }
                 }
         } else {
-            fUser = mAuth.currentUser!!
             txtEmail.error = "Account not verify"
             txtEmail.requestFocus()
             resend_email_verify.isVisible = true
@@ -109,7 +110,7 @@ class LoginFragment : Fragment() {
             }
             mAuth.signOut()
             Common.buttonEnable(signButton, this.context!!)
-            loading_wrap.visibility = View.GONE
+            this.activity!!.loading_wrap.visibility = View.GONE
         }
     }
 }
