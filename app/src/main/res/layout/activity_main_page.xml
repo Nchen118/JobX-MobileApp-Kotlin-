@@ -11,6 +11,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
+        android:background="#1C2938"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -98,9 +99,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#FFFFFF"
+        android:background="#1C2938"
         app:tabGravity="fill"
-        app:tabIndicatorGravity="top" />
+        app:tabIndicatorGravity="top"
+        app:tabTextColor="#ffffff" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabChat"
@@ -111,6 +113,12 @@
         android:clickable="true"
         app:backgroundTint="@color/browser_actions_bg_grey"
         app:srcCompat="@drawable/email" />
+
+    <include
+        layout="@layout/loading_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

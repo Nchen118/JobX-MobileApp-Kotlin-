@@ -55,7 +55,7 @@ class LoginFragment : Fragment() {
         callbackManager = CallbackManager.Factory.create()
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.iidd))
+            .requestIdToken("515790651987-b3olvl6e4id3dcqbfqtum7qvoevh0fes.apps.googleusercontent.com")
             .requestEmail()
             .build()
 
@@ -131,7 +131,7 @@ class LoginFragment : Fragment() {
         callbackManager.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
+            val any = try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)

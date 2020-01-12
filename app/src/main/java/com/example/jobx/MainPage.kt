@@ -21,8 +21,6 @@ import kotlinx.android.synthetic.main.activity_main_page.*
 import kotlinx.android.synthetic.main.login_fragment.view.*
 
 class MainPage : AppCompatActivity() {
-    private lateinit var mAuth: FirebaseAuth
-    private lateinit var fStore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +35,7 @@ class MainPage : AppCompatActivity() {
             val intent = Intent(this,ChatList::class.java)
             startActivity(intent)
         }
+
         if (Common.user?.position == "jobseeker") {
             fragmentAdapter.addFragment(InfoWall(), "Page 1")
             fragmentAdapter.addFragment(JobList(), "Job")
@@ -69,20 +68,6 @@ class MainPage : AppCompatActivity() {
         tabs.setupWithViewPager(viewPage)
 
         name.text = Common.user.name
-
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-
-        if (Common.user?.position == "jobseeker") {
-
-        } else if (Common.user?.position == "company") {
-
-        } else {
-
-        }
 
     }
 
