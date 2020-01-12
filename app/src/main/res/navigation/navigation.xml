@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@+id/adminMainFragment">
+    <fragment
+        android:id="@+id/adminMainFragment"
+        android:name="com.example.jobx.admin.ManageJobFragment"
+        android:label="fragment_admin_main"
+        tools:layout="@layout/fragment_admin_main">
+        <action
+            android:id="@+id/action_adminMainFragment_to_manageJobFragment"
+            app:destination="@id/manageJobFragment" />
+        <action
+            android:id="@+id/action_adminMainFragment_to_manageUserFragment"
+            app:destination="@id/manageUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageJobFragment"
+        android:name="com.example.jobx.admin.ManageJobFragment"
+        android:label="fragment_manage_job"
+        tools:layout="@layout/fragment_manage_job" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.jobx.admin.AdminActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_admin" />
+    <fragment
+        android:id="@+id/manageUserFragment"
+        android:name="com.example.jobx.admin.ManageUserFragment"
+        android:label="fragment_manage_user"
+        tools:layout="@layout/fragment_manage_user" />
+</navigation>

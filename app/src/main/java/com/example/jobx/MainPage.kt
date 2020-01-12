@@ -1,8 +1,11 @@
 package com.example.jobx
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.example.jobx.admin.AdminActivity
 import com.example.jobx.jobseeker.CompanyList
 import com.example.jobx.jobseeker.JobList
 import com.example.jobx.library.Adapter
@@ -34,7 +37,15 @@ class MainPage : AppCompatActivity() {
             fragmentAdapter.addFragment(InfoWall(), "Page 1")
             fragmentAdapter.addFragment(LogoutPage(), "Logout")
         } else if (Common.user?.position == "admin") {
-
+            startActivity(
+                Intent(this, AdminActivity::class.java),
+                ActivityOptions.makeCustomAnimation(
+                    this,
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                ).toBundle()
+            )
+            finish()
         } else {
 
         }

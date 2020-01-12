@@ -15,12 +15,14 @@ import com.example.jobx.R
 import com.example.jobx.database.User
 import com.example.jobx.library.Common
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.login_fragment.*
 
 class LoginFragment : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var fStore: FirebaseFirestore
+    private lateinit var fUser: FirebaseUser
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +46,7 @@ class LoginFragment : Fragment() {
                 err = true
             } else if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail.text.toString()).matches()) {
                 txtEmail.error = "Please enter the correct email address format"
+                txtEmail.requestFocus()
                 err = true
             } else if (txtPassword.text.isEmpty()) {
                 txtPassword.error = "Please enter the password"
@@ -51,6 +54,7 @@ class LoginFragment : Fragment() {
                 err = true
             } else if (txtPassword.text.toString().length < 6) {
                 txtPassword.error = "Please enter at least 6 digit or character"
+                txtPassword.requestFocus()
                 err = true
             }
 
@@ -92,9 +96,12 @@ class LoginFragment : Fragment() {
                     }
                 }
         } else {
+            fUser = mAuth.currentUser!!
+            txtEmail.error = "Account not verify"
+            txtEmail.requestFocus()
             resend_email_verify.isVisible = true
             resend_email_verify.setOnClickListener {
-                mAuth.currentUser!!.sendEmailVerification()
+                fUser.sendEmailVerification()
                 Toast.makeText(this.context, "Email verification sent", Toast.LENGTH_SHORT).show()
             }
             mAuth.signOut()

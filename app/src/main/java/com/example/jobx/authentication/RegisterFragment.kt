@@ -42,14 +42,6 @@ class RegisterFragment : Fragment() {
     }
 
     private fun signUp() {
-        var email: String = ""
-        var password: String = ""
-        val name: String
-        val desc: String
-        val phone: String
-        val address: String
-        val city: String
-        val code: String
         if (txtEmail.text.isNullOrEmpty()) {
             txtEmail.error = "Please enter your email"
             txtEmail.requestFocus()
@@ -57,23 +49,19 @@ class RegisterFragment : Fragment() {
         } else if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail.text.toString()).matches()) {
             txtEmail.error = "Please enter the correct email address format"
             txtEmail.requestFocus()
-        } else {
-            email = txtEmail.text.toString().trim()
+            return
         }
-        when {
-            txtPassword.text.isNullOrEmpty() -> {
-                txtPassword.error = "Please enter the password"
-                txtPassword.requestFocus()
-                return
-            }
-            txtPassword.text.toString().length < 6 -> {
-                txtPassword.error = "Please enter at least 6 digit or character"
-                txtPassword.requestFocus()
-            }
-            else -> {
-                password = txtPassword.text.toString()
-            }
+
+        if (txtPassword.text.isNullOrEmpty()) {
+            txtPassword.error = "Please enter the password"
+            txtPassword.requestFocus()
+            return
+        } else if (txtPassword.text.toString().length < 6) {
+            txtPassword.error = "Please enter at least 6 digit or character"
+            txtPassword.requestFocus()
+            return
         }
+
 
         if (txtName.text.isNullOrEmpty()) {
             txtName.error = "Please enter your name"
@@ -93,7 +81,7 @@ class RegisterFragment : Fragment() {
                     strBf,
                     m.group(1).toUpperCase() + m.group(2).toLowerCase()
                 )
-                name = m.appendTail(strBf).toString()
+                var name = m.appendTail(strBf).toString()
             } else {
                 txtName.error = "Please enter a valid name"
                 txtName.requestFocus()
@@ -104,28 +92,21 @@ class RegisterFragment : Fragment() {
             txtDesc.error = "Please key in description"
             txtDesc.requestFocus()
             return
-        } else {
-            desc = txtDesc.text.toString().trim()
         }
+
         if (txtPhone.text.isNullOrEmpty()) {
             txtPhone.error = "Please key in phone number"
             txtPhone.requestFocus()
             return
         } else {
             val temp = txtPhone.text.toString().trim()
-            var returnPhoneNumber: String = ""
+            var returnPhoneNumber: String
             val p1: Pattern = Pattern.compile("([0][1][1])-(\\d{8})") // 011-34567898
-
             val p2: Pattern = Pattern.compile("([0][1][02-9])-(\\d{7})") // 012-3456789
-
             val p3: Pattern = Pattern.compile("([0][1][1])(\\d{8})") // 01134567898
-
             val p4: Pattern = Pattern.compile("([0][1][02-9])(\\d{7})") // 0123456789
-
             val p5: Pattern = Pattern.compile("([0][1][1]) (\\d{8})") // 011 12121212
-
             val p6: Pattern = Pattern.compile("([0][1][02-9]) (\\d{7})") // 012 1212121
-
 
             val strBf = StringBuffer()
             // Match the phone number with the format of phone number in Malaysia
@@ -161,8 +142,8 @@ class RegisterFragment : Fragment() {
                 txtPhone.requestFocus()
                 return
             }
-            phone = returnPhoneNumber
         }
+
         if (txtAddress.text.isNullOrEmpty()) {
             txtAddress.error = "Please enter valid address"
             txtAddress.requestFocus()
@@ -182,13 +163,13 @@ class RegisterFragment : Fragment() {
                     strBf,
                     m.group(1).toUpperCase() + m.group(2).toLowerCase()
                 )
-                address = m.appendTail(strBf).toString()
             } else {
                 txtAddress.error = "Please enter valid address"
                 txtAddress.requestFocus()
                 return
             }
         }
+
         if (txtCity.text.isNullOrEmpty()) {
             txtCity.error = "Please enter valid city"
             txtCity.requestFocus()
@@ -207,13 +188,13 @@ class RegisterFragment : Fragment() {
                     strBf,
                     m.group(1).toUpperCase() + m.group(2).toLowerCase()
                 )
-                city = m.appendTail(strBf).toString()
             } else {
                 txtCity.error = "Please enter valid city"
                 txtCity.requestFocus()
                 return
             }
         }
+
         if (txtPosCode.text.isNullOrEmpty()) {
             txtPosCode.error = "Please key in valid poscode"
             txtPosCode.requestFocus()
@@ -225,8 +206,6 @@ class RegisterFragment : Fragment() {
                 txtPosCode.error = "Please key in valid poscode"
                 txtPosCode.requestFocus()
                 return
-            } else {
-                code = temp
             }
         }
 
@@ -242,7 +221,8 @@ class RegisterFragment : Fragment() {
                         txtAddress.text.toString(),
                         txtCity.text.toString(),
                         txtPosCode.text.toString(),
-                        if (selectSwitch.isChecked) "company" else "jobseeker",
+//                        if (selectSwitch.isChecked) "company" else "jobseeker",
+                        "admin",
                         "true"
                     )
                     fStore.collection("users").document(mAuth.currentUser!!.uid).set(
@@ -266,7 +246,7 @@ class RegisterFragment : Fragment() {
                         clear()
                         Common.buttonEnable(signUp, this.context!!)
                         FirebaseAuth.getInstance().signOut()
-                        pager.currentItem = 0
+                        pager.setCurrentItem(0)
                     }.addOnFailureListener {
                         Common.buttonEnable(signUp, this.context!!)
                         Toast.makeText(this.context, it.message, Toast.LENGTH_SHORT).show()
