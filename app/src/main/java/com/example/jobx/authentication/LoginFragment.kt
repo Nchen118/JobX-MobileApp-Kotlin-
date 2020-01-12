@@ -86,8 +86,8 @@ class LoginFragment : Fragment() {
             fStore.collection("users").document(mAuth.currentUser!!.uid).get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Common.user.id = fUser.uid
                         Common.user = task.result?.toObject(User::class.java)!!
+                        Common.user.id = fUser.uid
                         Toast.makeText(this.context, "Login Successful", Toast.LENGTH_SHORT).show()
                         startActivity(
                             Intent(this.context, LoadingPage::class.java),
