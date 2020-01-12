@@ -110,4 +110,9 @@
     <string name="tv_comName">Company Name</string>
     <string name="tv_jobName">Job Name</string>
     <string name="com_description">Description</string>
+    <string name="register_successfully">
+        "Register Successfully !\n"
+        "Email verification has sent"
+    </string>
+    <string name="todo">TODO</string>
 </resources>

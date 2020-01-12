@@ -9,13 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.jobx.LoadingPage
 import com.example.jobx.MainPage
 import com.example.jobx.R
+import com.example.jobx.admin.AdminActivity
 import com.example.jobx.database.User
 import com.example.jobx.library.Common
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main_page.*
+import kotlinx.android.synthetic.main.loading_icon.*
 import kotlinx.android.synthetic.main.register_fragment.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -210,6 +213,7 @@ class RegisterFragment : Fragment() {
         }
 
         Common.buttonDisable(signUp, this.context!!)
+        loading_wrap.visibility = View.VISIBLE
         mAuth.createUserWithEmailAndPassword(txtEmail.text.toString(), txtPassword.text.toString())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -231,10 +235,10 @@ class RegisterFragment : Fragment() {
                             this.context,
                             "Account success register",
                             Toast.LENGTH_SHORT
-                        )
-                            .show()
+                        ).show()
+                        FirebaseAuth.getInstance().signOut()
                         startActivity(
-                            Intent(this.context, MainPage::class.java),
+                            Intent(this.context, RegisterSuccessful::class.java),
                             ActivityOptions.makeCustomAnimation(
                                 this.context,
                                 R.anim.slide_in_right,
@@ -242,16 +246,14 @@ class RegisterFragment : Fragment() {
                             ).toBundle()
                         )
                         this.activity?.finish()
-                        clear()
-                        Common.buttonEnable(signUp, this.context!!)
-                        FirebaseAuth.getInstance().signOut()
-                        pager.setCurrentItem(0)
                     }.addOnFailureListener {
                         Common.buttonEnable(signUp, this.context!!)
+                        loading_wrap.visibility = View.GONE
                         Toast.makeText(this.context, it.message, Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Common.buttonEnable(signUp, this.context!!)
+                    loading_wrap.visibility = View.GONE
                     txtEmail.error = task.exception?.message
                     txtEmail.requestFocus()
                 }

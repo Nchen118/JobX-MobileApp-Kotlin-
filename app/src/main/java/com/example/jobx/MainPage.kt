@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main_page.*
+import kotlinx.android.synthetic.main.login_fragment.view.*
 
 class MainPage : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
@@ -33,9 +34,11 @@ class MainPage : AppCompatActivity() {
             fragmentAdapter.addFragment(JobList(), "Job")
             fragmentAdapter.addFragment(CompanyList(), "Company")
             fragmentAdapter.addFragment(LogoutPage(), "Logout")
+            supportActionBar?.title = "Job Seeker"
         } else if (Common.user?.position == "company") {
             fragmentAdapter.addFragment(InfoWall(), "Page 1")
             fragmentAdapter.addFragment(LogoutPage(), "Logout")
+            supportActionBar?.title = "Company"
         } else if (Common.user?.position == "admin") {
             startActivity(
                 Intent(this, AdminActivity::class.java),
@@ -47,7 +50,7 @@ class MainPage : AppCompatActivity() {
             )
             finish()
         } else {
-
+            supportActionBar?.title = "JobX"
         }
 
         viewPage.adapter = fragmentAdapter
