@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_greyish"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_greyish"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+            <!-- TODO: Update blank fragment layout -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layLocation"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/location"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="@+id/layPosition"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/layPosition"
+                app:layout_constraintTop_toBottomOf="@+id/layNumAvailable">
+
+                <EditText
+                    android:id="@+id/txtLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layWorkHour"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/workHour"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layDate">
+
+                <EditText
+                    android:id="@+id/txtWorkHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="time"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layPosition"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/job_position"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/holo_orange_dark"
+                app:layout_constraintEnd_toEndOf="@+id/laySalary"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/laySalary"
+                app:layout_constraintTop_toBottomOf="@+id/layLocation">
+
+                <EditText
+                    android:id="@+id/txtPosition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layDate"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/date"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/holo_orange_dark"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="@+id/layWorkHour"
+                app:layout_constraintStart_toStartOf="@+id/layWorkHour"
+                app:layout_constraintTop_toBottomOf="@+id/laySalary">
+
+                <EditText
+                    android:id="@+id/txtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/laySalary"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/job_salary"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/holo_orange_dark"
+                app:layout_constraintEnd_toEndOf="@+id/layDate"
+                app:layout_constraintStart_toStartOf="@+id/layDate"
+                app:layout_constraintTop_toBottomOf="@+id/layPosition">
+
+                <EditText
+                    android:id="@+id/txtJobsalary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layJobDesc"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/job_desc"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/holo_orange_dark"
+                app:layout_constraintEnd_toEndOf="@+id/layNumAvailable"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/layNumAvailable"
+                app:layout_constraintTop_toBottomOf="@+id/layJobName">
+
+                <EditText
+                    android:id="@+id/txtJobDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layJobName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="@string/job_name"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/holo_orange_dark"
+                app:layout_constraintEnd_toEndOf="@+id/layJobDesc"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/layJobDesc"
+                app:layout_constraintTop_toBottomOf="@+id/txtReg">
+
+                <EditText
+                    android:id="@+id/txtJobName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/updateRecord"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/button"
+                android:text="@string/update"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layWorkHour" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layNumAvailable"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/number_available"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/holo_orange_dark"
+                app:layout_constraintStart_toStartOf="@+id/layLocation"
+                app:layout_constraintEnd_toEndOf="@+id/layLocation"
+                app:layout_constraintTop_toBottomOf="@+id/layJobDesc">
+
+                <EditText
+                    android:id="@+id/txtNumberAvailable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberSigned"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txtReg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/updateRecord"
+                android:textSize="50sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>

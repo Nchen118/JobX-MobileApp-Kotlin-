@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.jobx.admin.AdminActivity
 import com.example.jobx.company.ApproveJobRequest
+import com.example.jobx.company.CompanyJobList
 import com.example.jobx.company.InsertJob
 import com.example.jobx.jobseeker.CompanyList
 import com.example.jobx.jobseeker.JobList
@@ -40,6 +41,7 @@ class MainPage : AppCompatActivity() {
         } else if (Common.user?.position == "company") {
             fragmentAdapter.addFragment(InfoWall(), "Page 1")
             fragmentAdapter.addFragment(InsertJob(), "Insert")
+            fragmentAdapter.addFragment(CompanyJobList(), "Job")
             fragmentAdapter.addFragment(ApproveJobRequest(), "Request List")
             fragmentAdapter.addFragment(LogoutPage(), "Logout")
             supportActionBar?.title = "Company"

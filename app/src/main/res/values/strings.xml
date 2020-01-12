@@ -125,4 +125,6 @@
     <string name="job_name">Job Name</string>
     <string name="insert">Insert</string>
     <string name="number_available">Number Available</string>
+    <string name="update">Update</string>
+    <string name="updateRecord">Update</string>
 </resources>
