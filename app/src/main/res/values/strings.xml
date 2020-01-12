@@ -115,4 +115,14 @@
         "Email verification has sent"
     </string>
     <string name="todo">TODO</string>
+    <string name="date">Date</string>
+    <string name="workHour">Work Hour</string>
+    <string name="insertRecord">Insert</string>
+    <string name="location">Location</string>
+    <string name="job_position">Job Position</string>
+    <string name="job_salary">Job Salary</string>
+    <string name="job_desc">Job Description</string>
+    <string name="job_name">Job Name</string>
+    <string name="insert">Insert</string>
+    <string name="number_available">Number Available</string>
 </resources>

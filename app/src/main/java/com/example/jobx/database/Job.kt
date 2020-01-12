@@ -11,5 +11,6 @@ data class Job (
     var job_position:String? = null,
     var job_salary:Float? = null,
     var job_date:String? = null,
+    var job_workHour:String? = null,
     var job_status:String? = null
 )

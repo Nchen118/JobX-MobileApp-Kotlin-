@@ -14,6 +14,7 @@
         <activity android:name=".admin.AdminActivity" />
         <activity android:name=".admin.ManageJobFragment" />
         <activity android:name=".MainPage" />
+        <activity android:name=".jobseeker.JobDetail"/>
         <activity
             android:name=".LoadingPage"
             android:theme="@style/AppTheme.NoActionBar">

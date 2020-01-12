@@ -1,6 +1,7 @@
 package com.example.jobx.company
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jobx.R
 import com.example.jobx.database.Job
+import com.example.jobx.jobseeker.JobDetail
 
 class CompanyJobRecycleViewAdapter(private val mContext: Context, private val mData: List<Job>) :
     RecyclerView.Adapter<CompanyJobRecycleViewAdapter.MyViewHolder>() {
