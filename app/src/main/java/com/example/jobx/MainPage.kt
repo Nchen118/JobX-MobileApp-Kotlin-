@@ -3,6 +3,7 @@ package com.example.jobx
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.jobx.admin.AdminActivity
@@ -12,6 +13,7 @@ import com.example.jobx.company.CompanyJobList
 import com.example.jobx.company.InsertJob
 import com.example.jobx.jobseeker.CompanyList
 import com.example.jobx.jobseeker.JobList
+import com.example.jobx.jobseeker.update_profile
 import com.example.jobx.library.Adapter
 import com.example.jobx.library.Common
 import com.google.android.material.tabs.TabLayout
@@ -34,6 +36,22 @@ class MainPage : AppCompatActivity() {
         fabChat.setOnClickListener {
             val intent = Intent(this,ChatList::class.java)
             startActivity(intent)
+        }
+        logoutIcon.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+            startActivity(
+                Intent(this, LoadingPage::class.java),
+                ActivityOptions.makeCustomAnimation(
+                    this,
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                ).toBundle()
+            )
+            this.finish()
+        }
+        editProfile.setOnClickListener {
+            startActivity(Intent(this,update_profile::class.java))
         }
 
         if (Common.user?.position == "jobseeker") {

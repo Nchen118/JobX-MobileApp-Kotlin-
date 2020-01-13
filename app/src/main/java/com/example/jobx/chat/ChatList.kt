@@ -25,7 +25,7 @@ class ChatList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_list)
-
+        actionBar?.title = "Chatting List"
         recyclerview_latest_messages.adapter = adapter
         recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
         adapter.setOnItemClickListener{item, view ->

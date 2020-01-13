@@ -8,6 +8,7 @@
     tools:context=".admin.AdminMainFragment">
 
     <Button
+        android:text="Job"
         android:id="@+id/job_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:text="Company"
         android:id="@+id/company_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/job_btn" />
 
     <Button
+        android:text="Job Seeker"
         android:id="@+id/user_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

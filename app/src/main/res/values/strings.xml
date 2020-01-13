@@ -129,5 +129,17 @@
     <string name="updateRecord">Update</string>
     <string name="facebook_app_id">1205518309642074</string>
     <string name="fb_login_protocol_scheme">fb1205518309642074</string>
+    <string name="phone_number">Phone :</string>
+    <string name="com_address">Address :</string>
+    <string name="com_city">City :</string>
+    <string name="com_pCode">Pos Code :</string>
+    <string name="com_country">Country :</string>
+    <string name="com_desc">Description</string>
+    <string name="com_phone">Phone</string>
+    <string name="Com_address">Address</string>
+    <string name="Com_city">City</string>
+    <string name="com_PCode">Pos Code</string>
+    <string name="Com_country">Country</string>
+    <string name="inputRegisterPss">Password</string>
     <string name="iidd">"1021554430963-od0f1ubpf3fc5fl0u9dr9dve5j5p480n.apps.googleusercontent.com"</string>
 </resources>
