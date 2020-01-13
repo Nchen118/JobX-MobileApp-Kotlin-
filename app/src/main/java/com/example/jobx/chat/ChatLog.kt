@@ -132,7 +132,7 @@ class ChatLog : AppCompatActivity() {
         val i = intent
         val b = i.extras
         val toId = b?.get(UserList.USER_KEY) as String
-
+        if(text.isNullOrEmpty()) return
         if(fromId==null) return
         val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
 

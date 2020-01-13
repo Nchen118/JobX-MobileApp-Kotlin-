@@ -2,20 +2,22 @@ package com.example.jobx.jobseeker
 
 import android.app.ActivityOptions
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.jobx.LoadingPage
 import com.example.jobx.R
 import com.example.jobx.database.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_update_profile.*
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.activity_register_successful.*
+import kotlinx.android.synthetic.main.activity_update_profile.*
 import kotlinx.android.synthetic.main.register_fragment.txtAddress
 import kotlinx.android.synthetic.main.register_fragment.txtCity
 import kotlinx.android.synthetic.main.register_fragment.txtDesc
@@ -23,6 +25,7 @@ import kotlinx.android.synthetic.main.register_fragment.txtEmail
 import kotlinx.android.synthetic.main.register_fragment.txtName
 import kotlinx.android.synthetic.main.register_fragment.txtPhone
 import kotlinx.android.synthetic.main.register_fragment.txtPosCode
+import java.io.ByteArrayOutputStream
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -31,9 +34,13 @@ class update_profile : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseFirestore: FirebaseFirestore
     private lateinit var user:User
+    private val REQUEST_IMAGE_CAPTURE = 100
+    private var imageUri: Uri? = null
 
+    val TAG = "Update"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_update_profile)
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -66,10 +73,80 @@ class update_profile : AppCompatActivity() {
 //
             }
         }
+        val storageRef = FirebaseStorage.getInstance()
+            .reference.child("pics/${FirebaseAuth.getInstance().currentUser?.uid}")
+
+        storageRef.downloadUrl.addOnCompleteListener {
+                task ->
+            if(task.isSuccessful) {
+                imageUri = task.result
+                this?.let {
+                    Glide.with(this)
+                        .load(imageUri)
+                        .into(imageView)
+                }
+
+                Toast.makeText(
+                    this, "$imageUri",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            }
+            else {
+                Toast.makeText(
+                    this, "${task.exception}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
         updateBtn.setOnClickListener {
             validation()
         }
+        imageView3.setOnClickListener {
+            takePictureIntent()
+        }
 
+    }
+    private fun takePictureIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == AppCompatActivity.RESULT_OK) {
+            Log.w(TAG, "uploadImage: Success")
+            val bitmap = data?.extras?.get("data") as Bitmap
+            uploadImageAndSaveUri(bitmap)
+
+        }
+    }
+
+    private fun uploadImageAndSaveUri(bitmap: Bitmap) {
+        val baos = ByteArrayOutputStream()
+        val storageRef = FirebaseStorage.getInstance()
+            .reference.child("pics/${FirebaseAuth.getInstance().currentUser?.uid}")
+
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val image = baos.toByteArray()
+        val upload = storageRef.putBytes(image)
+
+        upload.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                storageRef.downloadUrl.addOnCompleteListener { downloadTask ->
+                    downloadTask.result?.let {
+                        imageUri = it
+                        imageView.setImageBitmap(bitmap)
+                        Toast.makeText(
+                            this, "The image is successfully uploaded",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+            } else {
+                Log.w(TAG, "uploadImage: Failure", task.exception)
+            }
+        }
 
     }
     private fun validation(){
@@ -238,6 +315,7 @@ class update_profile : AppCompatActivity() {
                 txtCity.setText(city)
                 txtPosCode.setText(code)
                 Toast.makeText(this,"Information is updated!!",Toast.LENGTH_SHORT).show()
+                this.finish()
             }
             .addOnFailureListener {
                 Toast.makeText(this,"Something wrong",Toast.LENGTH_SHORT).show()

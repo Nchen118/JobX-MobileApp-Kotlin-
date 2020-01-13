@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/jobname"
-                    android:text="@string/tv_jobName" />
+                    android:text="@string/tv_PhoneNo" />
 
                 <TextView
                     android:id="@+id/JobName"
@@ -123,42 +123,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-            <Button
-                android:id="@+id/btnApply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="124dp"
-                android:background="@drawable/buttonshape"
-                android:shadowColor="#FFFFFF"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="4"
-                android:text="Apply"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                app:layout_constraintEnd_toStartOf="@+id/btnCancel"
-                app:layout_constraintHorizontal_bias="0.904"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description" />
-
-            <Button
-                android:id="@+id/btnCancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="48dp"
-                android:background="@drawable/buttonshape"
-                android:shadowColor="#FFFFFF"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="4"
-                android:text="Cancel"
-                android:textColor="#FFFFFF"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/btnApply"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description"
-                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
