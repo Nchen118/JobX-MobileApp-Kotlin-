@@ -27,7 +27,24 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".chat.UserList">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".chat.ChatLog" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".chat.UserList" />
+        </activity>
+        <activity android:name=".chat.ChatList" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".jobseeker.update_profile"/>
         <activity android:name=".authentication.RegisterSuccessful"></activity>
         <activity android:name=".authentication.AuthActivity" />
         <activity android:name=".admin.AdminActivity" />
@@ -48,6 +65,7 @@
             </intent-filter>
         </activity>
     </application>
+
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
